@@ -1,0 +1,30 @@
+<style>
+    .trail { /* className for the trail elements */
+      position: absolute;
+      height: 6px; width: 6px;
+      border-radius: 3px;
+      background: teal;
+    }
+    body {
+      height: 300px;
+    }
+  </style>
+  
+  <script>
+    let currentEl = 0;
+    const trailEls = [];
+
+    for (let i =0; i < 6; i++) {
+        const node = document.createElement('div');
+        node.className = 'trail';
+        document.body.appendChild(node);
+        trailEls.push(node);
+    }
+
+    window.addEventListener('mousemove', event => {
+        const el = trailEls[currentEl]
+        el.style.left = `${event.pageX}px`;
+        el.style.top = `${event.pageY}px`;
+        currentEl = (currentEl + 1) % trailEls.length
+    })
+  </script>

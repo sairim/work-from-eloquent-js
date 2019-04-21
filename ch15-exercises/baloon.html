@@ -1,0 +1,21 @@
+<p>🎈</p>
+
+<script>
+    para = document.querySelector('p');
+    let baloonSize = 20;
+    window.addEventListener('keydown', cb);
+
+    function cb(event) {
+        event.preventDefault();
+        if (event.key === 'ArrowUp') {
+            if (baloonSize >= 60) {
+                para.textContent = '💥';
+                window.removeEventListener('keydown', cb);
+            }
+            para.style.fontSize = `${baloonSize += baloonSize * .10}px`;
+        }
+        if (event.key === 'ArrowDown') {
+            para.style.fontSize = `${baloonSize -= baloonSize * .10}px`;
+        }
+    }
+</script>
